@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vessel Fitness · Track Your Process</title>
+    
+    <!-- Google Fonts Import - Multiple Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== VESSEL FITNESS - ENHANCED DESIGN ===== */
+        
+        /* RESET STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* BODY STYLES */
+        body {
+            background: linear-gradient(135deg, #faebd7 0%, #f5e6d3 100%);
+            font-family: 'Poppins', 'Arial', sans-serif;
+            color: #2f4f4f;
+            line-height: 1.6;
+        }
+        
+        /* HEADING STYLES - Different fonts for different headings */
+        h1, h2 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        h3, h4 {
+            font-family: 'Montserrat', 'Helvetica', sans-serif;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-top: 2rem;
+            background: linear-gradient(135deg, #008080 0%, #ff7f50 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #008080, #ff7f50);
+            border-radius: 2px;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+            color: #008080;
+            margin-bottom: 1rem;
+        }
+        
+        h4 {
+            font-size: 1.3rem;
+            color: #ff7f50;
+            margin-top: 1rem;
+        }
+        
+        /* LINK STYLES */
+        a {
+            color: #ff7f50;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: #ff6347;
+            text-decoration: underline;
+        }
+        
+        /* BUTTON STYLES */
+        button {
+            background: linear-gradient(135deg, #008080 0%, #006666 100%);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 128, 128, 0.3);
+        }
+        
+        button:hover {
+            background: linear-gradient(135deg, #ff7f50 0%, #ff6347 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+        }
+        
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header h2 {
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 2rem;
+            color: #008080;
+            margin-bottom: 0;
+            white-space: normal;
+        }
+        
+        header h2::after {
+            display: none;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li a {
+            color: #2f4f4f;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #008080, #ff7f50);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        nav ul li a:hover {
+            color: #008080;
+            text-decoration: none;
+        }
+        
+        header div:last-child {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        header button {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+            background: transparent;
+            border: 2px solid #008080;
+            color: #008080;
+            box-shadow: none;
+        }
+        
+        header button:first-child {
+            background: transparent;
+            border: 2px solid #008080;
+            color: #008080;
+        }
+        
+        header button:first-child:hover {
+            background: linear-gradient(135deg, #008080 0%, #006666 100%);
+            color: white;
+            border-color: transparent;
+        }
+        
+        header button:last-child {
+            background: linear-gradient(135deg, #008080 0%, #006666 100%);
+            color: white;
+            border: none;
+        }
+        
+        /* ===== SECTION STYLES with margins ===== */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        section:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* HOME SECTION - Hero */
+        #home {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.98) 100%);
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #home::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,128,128,0.03) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        #home > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        #home p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 1rem auto;
+            color: #4a5b5b;
+        }
+        
+        /* VALUES SECTION - Grid Layout */
+        #values {
+            background: linear-gradient(135deg, #faf9f6 0%, #ffffff 100%);
+        }
+        
+        #values > div {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 128, 128, 0.1);
+            text-align: center;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 128, 128, 0.15);
+            border-color: rgba(255, 127, 80, 0.3);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card h3 {
+            color: #008080;
+            margin-bottom: 1rem;
+        }
+        
+        .value-card p {
+            color: #4a5b5b;
+        }
+        
+        /* EXPERIENCE SECTION */
+        #experience {
+            background: linear-gradient(135deg, #ffffff 0%, #faf9f6 100%);
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .exp-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border-left: 5px solid #ff7f50;
+        }
+        
+        .exp-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .exp-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(0, 128, 128, 0.2);
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .exp-card h3 {
+            color: #008080;
+            margin-bottom: 1rem;
+        }
+        
+        .gender-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .gender-card {
+            background: linear-gradient(135deg, rgba(0,128,128,0.05) 0%, rgba(255,127,80,0.05) 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .gender-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* FAQ SECTION */
+        #faq {
+            background: linear-gradient(135deg, #ffffff 0%, #faf9f6 100%);
+            text-align: center;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .faq-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .faq-card h4 {
+            color: #008080;
+            margin-bottom: 1rem;
+        }
+        
+        /* FOOTER STYLES */
+        footer {
+            background: linear-gradient(135deg, #2f4f4f 0%, #1e3a3a 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-radius: 30px 30px 0 0;
+        }
+        
+        footer p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        footer button {
+            background: transparent;
+            border: 2px solid white;
+            margin: 0 0.5rem;
+            box-shadow: none;
+        }
+        
+        footer button:hover {
+            background: linear-gradient(135deg, #ff7f50 0%, #ff6347 100%);
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+        
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+                white-space: normal;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            nav ul {
+                justify-content: center;
+                gap: 1rem;
+            }
+            
+            section {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .gender-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            footer button {
+                display: block;
+                width: 80%;
+                margin: 0.5rem auto;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            header div:last-child {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            header button {
+                width: 100%;
+            }
+            
+            #values > div {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h2>⛅ Vessel</h2>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#values">Why Vessel</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+        
+        <div>
+            <button>Log in</button>
+            <button>Sign up</button>
+        </div>
+    </header>
+
+    <section id="home">
+        <h1>Fitness that adapts to you — male or female</h1>
+        <p>Track your progress, your cycle, your mood, and your recovery. A personalized fitness companion that understands your body's unique needs.</p>
+        <button style="margin-top: 2rem;">Start Your Journey →</button>
+    </section>
+
+    <section id="values">
+        <h2>Why Vessel is different</h2>
+        
+        <div>
+            <div class="value-card">
+                <div class="value-icon">🌙</div>
+                <h3>Cycle syncing (female)</h3>
+                <p>Workouts and nutrition tips aligned with your menstrual phase.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">⚡</div>
+                <h3>Recovery readiness (male)</h3>
+                <p>Sleep, HRV, and stress data combined into a daily readiness score.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">😊</div>
+                <h3>Mood & energy mapping</h3>
+                <p>See how your feelings connect to your performance and progress.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🎭</div>
+                <h3>Personalized character</h3>
+                <p>A companion that evolves with you and celebrates your wins.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">🌸</div>
+                <h3>Female holistic health</h3>
+                <p>Symptom prediction, postpartum mode, and perimenopause support.</p>
+            </div>
+            
+            <div class="value-card">
+                <div class="value-icon">💪</div>
+                <h3>Male functional fitness</h3>
+                <p>Real-world strength, mobility, and testosterone-supportive habits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>The Vessel experience</h2>
+        <p style="text-align: center; margin-bottom: 3rem; font-size: 1.2rem;">More than a website — a daily companion that grows with you</p>
+        
+        <div class="experience-grid">
+            <div class="exp-card">
+                <div class="exp-number">01</div>
+                <h3>Tell us your story</h3>
+                <p>Not just age and weight. We ask about your energy patterns, stress levels, relationship with fitness, and what truly motivates you.</p>
+            </div>
+            
+            <div class="exp-card">
+                <div class="exp-number">02</div>
+                <h3>60-second daily check-in</h3>
+                <p>Slide to log your energy, mood, soreness, and sleep. Takes less than a minute, but the insights last a lifetime.</p>
+            </div>
+            
+            <div class="exp-card">
+                <div class="exp-number">03</div>
+                <h3>Your rhythm, your feed</h3>
+                <p>Workout suggestions that match your phase or recovery score. All tailored to you in real-time.</p>
+            </div>
+            
+            <div class="exp-card">
+                <div class="exp-number">04</div>
+                <h3>Meet your fitness companion</h3>
+                <p>Your personalized character evolves with you. It celebrates streaks and suggests rest when you need it.</p>
+            </div>
+            
+            <div class="exp-card">
+                <div class="exp-number">05</div>
+                <h3>Weekly discoveries</h3>
+                <p>Every Monday, get personal insights about patterns you'd never notice on your own.</p>
+            </div>
+            
+            <div class="exp-card">
+                <div class="exp-number">06</div>
+                <h3>Grows with your life</h3>
+                <p>Vessel adapts as your body and goals change. One app for every season of life.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 3rem 0;">
+            <h3 style="color: #008080;">From tracking to understanding</h3>
+            <p style="font-size: 1.1rem;">Most fitness websites show you numbers. Vessel shows you you.</p>
+        </div>
+        
+        <div class="gender-section">
+            <div class="gender-card">
+                <div class="gender-icon">👨</div>
+                <h4>For men</h4>
+                <p>Your readiness score tells you when to push and when to recover. Functional fitness programs for real life. Testosterone-supportive habits built in.</p>
+            </div>
+            
+            <div class="gender-card">
+                <div class="gender-icon">👩</div>
+                <h4>For women</h4>
+                <p>Your cycle isn't an afterthought — it's the foundation. Phase-synced workouts, symptom prediction, and support for every stage from period to perimenopause.</p>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 2rem;">✨ This isn't another fitness tracker. It's the relationship with your body you've always wanted. ✨</p>
+            <button>See how it works →</button>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>Frequently asked questions</h2>
+        
+        <div class="faq-grid">
+            <div class="faq-card">
+                <div class="faq-icon">❓</div>
+                <h4>How is Vessel different?</h4>
+                <p>We focus on your body's natural rhythms — cycle for women, recovery for men — not just generic workouts.</p>
+            </div>
+            
+            <div class="faq-card">
+                <div class="faq-icon">🔒</div>
+                <h4>Is my data private?</h4>
+                <p>Absolutely. We never sell your health data. All information is encrypted and secure.</p>
+            </div>
+            
+            <div class="faq-card">
+                <div class="faq-icon">📱</div>
+                <h4>Do I need a wearable?</h4>
+                <p>No, but you can connect Apple Health, Google Fit, or other wearables for deeper insights.</p>
+            </div>
+            
+            <div class="faq-card">
+                <div class="faq-icon">💰</div>
+                <h4>What's the cost?</h4>
+                <p>Start with a 7-day free trial. After that, choose monthly or yearly plans that fit your budget.</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem;">
+            <p style="margin-bottom: 1.5rem;">Still have questions? We're here to help!</p>
+            <button>View full FAQ</button>
+            <button style="margin-left: 1rem;">Contact us</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Vessel Fitness. All rights reserved.</p>
+        <button>Privacy Policy</button>
+        <button>Terms of Service</button>
+        <button>Contact</button>
+    </footer>
+
+</body>
+</html>
